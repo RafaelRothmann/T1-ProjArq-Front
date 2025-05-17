@@ -1,0 +1,39 @@
+.btn-more {
+    background-color: #007bff;
+}
+
+.btn-remove {
+    background-color: #dc3545;
+}
+
+.btn-more:hover, .btn-remove:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.btn-more, .btn-remove {
+    cursor: pointer;
+    color: white;
+    border: none;
+    padding: 5px;
+}
+
+#tabela-produtos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabela-produtos th, #tabela-produtos td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabela-produtos th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+#title-produtos{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
