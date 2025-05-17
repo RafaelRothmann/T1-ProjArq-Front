@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar no Sistema de Vendas</title>
-    <script type="module" src="js/buscar.js"></script>
+    <link rel="icon" href="../assets/imgs/Logo-ACME.png" type="image/png">
+    <script type="module" src="js/buscar.js" defer></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/buscar.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="../assets/imgs/Logo-ACME.png" alt="Logo ACME" id="logo">
-            <a href="">Buscar Produto</a>
-            <a href="">Adicionar Produto</a>
-        </nav>
-
+<header>
+    <nav class="navbar">
+        <a href="../index.html"><img src="../assets/imgs/Logo-ACME.png" alt="Logo ACME" id="logo"></a>
+        <div class="nav-links">
+            <a href="buscar.html">Buscar Produto</a>
+            <a href="adicionar.html">Adicionar Produto</a>
+        </div>
+    </nav>
+</header>
         <div id="inputs">
             <input type="text" id="input-buscar" placeholder="Buscar Id Produto">
             <button id="button-buscar" onclick="buscarProduto()">Buscar</button>
@@ -31,18 +34,17 @@
                 <th>Ação</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Caneta Azul</td>
-                <td>2.50</td>
-                <td>
-                    <button onclick="verMais(1)" class="btn-more">Ver Mais</button>
-                    <button onclick="removerProduto(1)" class="btn-remove">Remover</button>
-                </td>
-            </tr>
+        <tbody id="tabela-produtos-body">            
         </tbody>
     </table>
-    </header>
+
+    <script>
+    function buscarProduto() {
+      const id = document.getElementById('input-buscar').value;        
+      window.location.href = `buscar.html?id=${id}`;
+
+    }
+  </script>
+
 </body>
 </html>

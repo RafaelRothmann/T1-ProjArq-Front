@@ -16,6 +16,7 @@
     color: white;
     border: none;
     padding: 5px;
+    margin-left: 10px;
 }
 
 #tabela-produtos {
@@ -36,4 +37,46 @@
 #title-produtos{
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+#inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+#input-buscar {
+    padding: 10px 15px;
+    width: 70%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+#input-buscar:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#button-buscar {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#button-buscar:hover {
+    background-color: #0056b3;
 }
