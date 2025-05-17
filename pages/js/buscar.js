@@ -10,16 +10,12 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
     return response.json();
   })
   .then(data => {
-    console.log('Dados do usuário:', data);
-
     if (params.has('id')) {
       let existeId = false;
       const id = params.get('id');
-      console.log('ID encontrado:', id);
 
       data.forEach(produto => {
         if (produto.id == id) {
-          console.log('Produto encontrado:', produto);
           existeId = true;
 
           const tabela = document.getElementById('tabela-produtos-body');
@@ -38,13 +34,24 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
           let buttonMore = document.createElement('button');
           buttonMore.textContent = 'Ver Mais';
           buttonMore.className = 'btn-more';
-          buttonMore.addEventListener('click', () => {});
+          buttonMore.addEventListener('click', () => {
+            window.location.href = `verMais.html?id=${produto.id}`;
+          });
           tdAcao.appendChild(buttonMore);
-          
+
           let buttonRemove = document.createElement('button');
           buttonRemove.textContent = 'Remover';
           buttonRemove.className = 'btn-remove';
-          buttonRemove.addEventListener('click', () => {});
+          buttonRemove.addEventListener('click', () => {
+            if (confirm(`Você tem certeza que deseja remover o produto ${produto.descricao}?`)) {
+              console.log(produto);
+
+              // Aqui você pode fazer a chamada para remover o produto
+              // fetch(`${API_BASE_URL}/removeProduto/${produto.id}`, {
+              //   method: 'DELETE'
+              // })
+            }
+          });
           tdAcao.appendChild(buttonRemove);
 
           tr.appendChild(tdId);
@@ -60,46 +67,54 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
       }
 
     } else {
-      console.log('ID não encontrado na URL');
-
       data.forEach(produto => {
-        console.log('Produto:', produto);
+        const tabela = document.getElementById('tabela-produtos-body');
+        let tr = document.createElement('tr');
 
-          const tabela = document.getElementById('tabela-produtos-body');
-          let tr = document.createElement('tr');
+        let tdId = document.createElement('td');
+        tdId.textContent = produto.id;
 
-          let tdId = document.createElement('td');
-          tdId.textContent = produto.id;
+        let tdNome = document.createElement('td');
+        tdNome.textContent = produto.descricao;
 
-          let tdNome = document.createElement('td');
-          tdNome.textContent = produto.descricao;
+        let tdPreco = document.createElement('td');
+        tdPreco.textContent = produto.precoUnitario;
 
-          let tdPreco = document.createElement('td');
-          tdPreco.textContent = produto.precoUnitario;
+        let tdAcao = document.createElement('td');
+        let buttonMore = document.createElement('button');
+        buttonMore.textContent = 'Ver Mais';
+        buttonMore.className = 'btn-more';
+        buttonMore.addEventListener('click', () => {
+          window.location.href = `verMais.html?id=${produto.id}`;
+        });
+        tdAcao.appendChild(buttonMore);
 
-          let tdAcao = document.createElement('td');
-          let buttonMore = document.createElement('button');
-          buttonMore.textContent = 'Ver Mais';
-          buttonMore.className = 'btn-more';
-          buttonMore.addEventListener('click', () => {});
-          tdAcao.appendChild(buttonMore);
-          
-          let buttonRemove = document.createElement('button');
-          buttonRemove.textContent = 'Remover';
-          buttonRemove.className = 'btn-remove';
-          buttonRemove.addEventListener('click', () => {});
-          tdAcao.appendChild(buttonRemove);
+        let buttonRemove = document.createElement('button');
+        buttonRemove.textContent = 'Remover';
+        buttonRemove.className = 'btn-remove';
+        buttonRemove.addEventListener('click', () => {
 
-          tr.appendChild(tdId);
-          tr.appendChild(tdNome);
-          tr.appendChild(tdPreco);
-          tr.appendChild(tdAcao);
-          tabela.appendChild(tr);
-        
+          if (confirm(`Você tem certeza que deseja remover o produto ${produto.descricao}?`)) {
+            console.log(produto);
+            
+            // Aqui você pode fazer a chamada para remover o produto
+            // fetch(`${API_BASE_URL}/removeProduto/${produto.id}`, {
+            //   method: 'DELETE'
+            // })
+          }
+
+        });
+        tdAcao.appendChild(buttonRemove);
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdNome);
+        tr.appendChild(tdPreco);
+        tr.appendChild(tdAcao);
+        tabela.appendChild(tr);
+
       });
 
     }
-
   });
 
 

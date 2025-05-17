@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,28 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/adicionar.css">
 </head>
+
 <body>
     <header>
-    <nav class="navbar">
-        <a href="../index.html"><img src="../assets/imgs/Logo-ACME.png" alt="Logo ACME" id="logo"></a>
-        
-        <div class="nav-links">
-            <a href="buscar.html">Buscar Produto</a>
-            <a href="adicionar.html">Adicionar Produto</a>
-        </div>
-    </nav>
-</header>
+        <nav class="navbar">
+            <a href="../index.html"><img src="../assets/imgs/Logo-ACME.png" alt="Logo ACME" id="logo"></a>
+
+            <div class="nav-links">
+                <a href="buscar.html">Buscar Produto</a>
+                <a href="adicionar.html">Adicionar Produto</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="container-adicionar">
+        <h1 id="title">Adicionar Produto</h1>
+        <form id="form-adicionar">
+            <input type="text" id="input-id" placeholder="ID do Produto" required>
+            <input type="text" id="input-descricao" placeholder="Descrição do Produto" required>
+            <input type="number" id="input-preco" placeholder="Preço Unitário (R$)" required>
+            <button type="submit">Adicionar Produto</button>
+        </form>
+    </div>
 </body>
+
 </html>
