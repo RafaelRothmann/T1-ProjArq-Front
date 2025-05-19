@@ -1,4 +1,4 @@
-#container-adicionar {
+.container-adicionar {
     max-width: 500px;
     margin: 50px auto;
     padding: 30px;
@@ -9,13 +9,13 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container-adicionar h1 {
+.container-adicionar h1 {
     font-size: 28px;
     margin-bottom: 24px;
     color: #333;
 }
 
-#container-adicionar input {
+.container-adicionar input {
     width: 100%;
     padding: 12px;
     margin-bottom: 16px;
@@ -25,13 +25,13 @@
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-#container-adicionar input:focus {
+.container-adicionar input:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
     outline: none;
 }
 
-#container-adicionar button {
+.container-adicionar button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -43,11 +43,11 @@
     transition: background-color 0.3s;
 }
 
-#container-adicionar button:hover {
+.container-adicionar button:hover {
     background-color: #0056b3;
 }
 
-#container-adicionar button:disabled {
+.container-adicionar button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
