@@ -11,74 +11,82 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
   })
   .then(data => {
     if (params.has('id')) {
-      let existeId = false;
       const id = params.get('id');
 
-      data.forEach(produto => {
+      data.forEach(async produto => {
         if (produto.id == id) {
-          existeId = true;
+          const response = await fetch(`${API_BASE_URL}/estoqueCompleto`);
 
-          const tabela = document.getElementById('tabela-produtos-body');
-          let tr = document.createElement('tr');
+          if (!response.ok) {
+            alert(`Erro na requisição: ${response.status}`);
+          }
 
-          let tdId = document.createElement('td');
-          tdId.textContent = produto.id;
+          const dados = await response.json();
 
-          let tdNome = document.createElement('td');
-          tdNome.textContent = produto.descricao;
-
-          let tdPreco = document.createElement('td');
-          tdPreco.textContent = produto.precoUnitario;
-
-          let tdAcao = document.createElement('td');
-          let buttonMore = document.createElement('button');
-          buttonMore.textContent = 'Ver Mais';
-          buttonMore.className = 'btn-more';
-          buttonMore.addEventListener('click', () => {
-            window.location.href = `verMais.html?id=${produto.id}`;
+          dados.forEach(item => {
+            if (item.idProduto == id) {
+    
+              const tabela = document.getElementById('tabela-produtos-body');
+              let tr = document.createElement('tr');
+    
+              let tdId = document.createElement('td');
+              tdId.textContent = produto.id;
+    
+              let tdNome = document.createElement('td');
+              tdNome.textContent = produto.descricao;
+    
+              let tdPreco = document.createElement('td');
+              tdPreco.textContent = produto.precoUnitario;
+    
+              let tdAcao = document.createElement('td');
+              tdAcao.textContent = item.quantidade;
+    
+              tr.appendChild(tdId);
+              tr.appendChild(tdNome);
+              tr.appendChild(tdPreco);
+              tr.appendChild(tdAcao);
+              tabela.appendChild(tr);
+            }
           });
-          tdAcao.appendChild(buttonMore);
 
-          tr.appendChild(tdId);
-          tr.appendChild(tdNome);
-          tr.appendChild(tdPreco);
-          tr.appendChild(tdAcao);
-          tabela.appendChild(tr);
         }
       });
 
-      if (!existeId) {
-        alert('ID não encontrado');
-      }
-
     } else {
-      data.forEach(produto => {
-        const tabela = document.getElementById('tabela-produtos-body');
-        let tr = document.createElement('tr');
+      data.forEach(async produto => {
+        const response = await fetch(`${API_BASE_URL}/estoqueCompleto`);
 
-        let tdId = document.createElement('td');
-        tdId.textContent = produto.id;
+          if (!response.ok) {
+            alert(`Erro na requisição: ${response.status}`);
+          }
 
-        let tdNome = document.createElement('td');
-        tdNome.textContent = produto.descricao;
+          const dados = await response.json();
 
-        let tdPreco = document.createElement('td');
-        tdPreco.textContent = produto.precoUnitario;
-
-        let tdAcao = document.createElement('td');
-        let buttonMore = document.createElement('button');
-        buttonMore.textContent = 'Ver Mais';
-        buttonMore.className = 'btn-more';
-        buttonMore.addEventListener('click', () => {
-          window.location.href = `verMais.html?id=${produto.id}`;
-        });
-        tdAcao.appendChild(buttonMore);
-
-        tr.appendChild(tdId);
-        tr.appendChild(tdNome);
-        tr.appendChild(tdPreco);
-        tr.appendChild(tdAcao);
-        tabela.appendChild(tr);
+          dados.forEach(item => {
+            if (item.idProduto == produto.id) {
+    
+              const tabela = document.getElementById('tabela-produtos-body');
+              let tr = document.createElement('tr');
+    
+              let tdId = document.createElement('td');
+              tdId.textContent = produto.id;
+    
+              let tdNome = document.createElement('td');
+              tdNome.textContent = produto.descricao;
+    
+              let tdPreco = document.createElement('td');
+              tdPreco.textContent = produto.precoUnitario;
+    
+              let tdAcao = document.createElement('td');
+              tdAcao.textContent = item.quantidade;
+    
+              tr.appendChild(tdId);
+              tr.appendChild(tdNome);
+              tr.appendChild(tdPreco);
+              tr.appendChild(tdAcao);
+              tabela.appendChild(tr);
+            }
+          });
 
       });
 
