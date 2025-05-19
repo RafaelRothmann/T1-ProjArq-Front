@@ -20,6 +20,9 @@ if (params.has('id')) {
                     existeId = true;
                     document.title = `Produto ${produto.descricao}`;
                     
+                    document.getElementById('title').innerText = produto.descricao;
+                    document.getElementById('preco').innerText = `R$ ${produto.precoUnitario.toFixed(2).replace('.', ',')}`;
+
                 }
             });
 

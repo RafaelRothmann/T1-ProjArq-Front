@@ -39,21 +39,6 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
           });
           tdAcao.appendChild(buttonMore);
 
-          let buttonRemove = document.createElement('button');
-          buttonRemove.textContent = 'Remover';
-          buttonRemove.className = 'btn-remove';
-          buttonRemove.addEventListener('click', () => {
-            if (confirm(`Você tem certeza que deseja remover o produto ${produto.descricao}?`)) {
-              console.log(produto);
-
-              // Aqui você pode fazer a chamada para remover o produto
-              // fetch(`${API_BASE_URL}/removeProduto/${produto.id}`, {
-              //   method: 'DELETE'
-              // })
-            }
-          });
-          tdAcao.appendChild(buttonRemove);
-
           tr.appendChild(tdId);
           tr.appendChild(tdNome);
           tr.appendChild(tdPreco);
@@ -88,23 +73,6 @@ await fetch(`${API_BASE_URL}/produtosDisponiveis`)
           window.location.href = `verMais.html?id=${produto.id}`;
         });
         tdAcao.appendChild(buttonMore);
-
-        let buttonRemove = document.createElement('button');
-        buttonRemove.textContent = 'Remover';
-        buttonRemove.className = 'btn-remove';
-        buttonRemove.addEventListener('click', () => {
-
-          if (confirm(`Você tem certeza que deseja remover o produto ${produto.descricao}?`)) {
-            console.log(produto);
-            
-            // Aqui você pode fazer a chamada para remover o produto
-            // fetch(`${API_BASE_URL}/removeProduto/${produto.id}`, {
-            //   method: 'DELETE'
-            // })
-          }
-
-        });
-        tdAcao.appendChild(buttonRemove);
 
         tr.appendChild(tdId);
         tr.appendChild(tdNome);
